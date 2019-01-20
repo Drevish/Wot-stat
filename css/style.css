@@ -1,0 +1,14 @@
+.navbar {
+  -webkit-border-radius: 0px;
+  -moz-border-radius: 0px;
+  border-radius: 0px; }
+  .navbar .form-wrapper {
+    margin-right: 0;
+    padding-top: 8px;
+    margin-bottom: -8px; }
+
+#content {
+  min-height: calc(100vh - 200px); }
+
+footer {
+  height: 60px; }
