@@ -1,7 +1,14 @@
 <!DOCTYPE>
 <html lang="en">
     <head>
-        <title>Wot statistics</title>
+        <title>
+            <?php
+                if(isset($data->user_id)) {
+                    $id = $data->user_id;
+                    echo $data->$id->nickname . "'s statistics";
+                }
+                else echo 'Wot statistics'; ?>
+            </title>
 
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">

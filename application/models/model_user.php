@@ -52,7 +52,7 @@ class Model_User extends Model {
     private function getUserId($nickname) {
 
         $response = $this->apiRequest(
-            "https://api.worldoftanks.ru/wot/account/list/?application_id=$this->application_id&search=$nickname");
+                "https://api.worldoftanks.ru/wot/account/list/?application_id=$this->application_id&search=$nickname");
 
         // no account with such nickname or with nickname which starts with this letters
         if (count($response->data) == 0) {
@@ -72,8 +72,8 @@ class Model_User extends Model {
     private function getClanInfo($clan_id) {
 
         $response = $this->apiRequest(
-            "https://api.worldoftanks.ru/wot/globalmap/claninfo/?application_id=$this->application_id" .
-            "&clan_id=$clan_id&fields=name%2C+tag%2C+clan_id");
+            "https://api.worldoftanks.ru/wgn/clans/info/?application_id=$this->application_id" .
+            "&clan_id=$clan_id&fields=tag%2C+name%2C+clan_id");
 
         $response = $response->data->$clan_id;
 
