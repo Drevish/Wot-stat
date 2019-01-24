@@ -1,0 +1,44 @@
+#content .account .top-row {
+  margin-top: 20px; }
+  #content .account .top-row .nickname {
+    font-weight: bold;
+    font-size: 20px; }
+    #content .account .top-row .nickname .nickname-link {
+      color: black; }
+  #content .account .top-row .info .secondary-text {
+    color: rgba(0, 0, 0, 0.6); }
+#content .account .clan-info {
+  margin-top: 20px; }
+#content .account .account-info {
+  margin-top: 50px; }
+  #content .account .account-info .account-info-field {
+    height: 150px;
+    text-align: center; }
+    #content .account .account-info .account-info-field .account-info-field-data {
+      color: #000000;
+      font-size: 30px; }
+  #content .account .account-info .account-info-field-big {
+    text-align: center; }
+    #content .account .account-info .account-info-field-big .account-info-field-big-image {
+      display: inline-block; }
+    #content .account .account-info .account-info-field-big .account-info-field-big-data {
+      margin-top: 20px;
+      color: #000000;
+      font-size: 30px; }
+#content .account .main-statistics {
+  font-size: 16px;
+  margin-bottom: 50px; }
+  #content .account .main-statistics .main-statistics-container {
+    margin-top: 30px; }
+    #content .account .main-statistics .main-statistics-container .main-statistics-row {
+      border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+      margin-bottom: 5px; }
+      #content .account .main-statistics .main-statistics-container .main-statistics-row [class^="col"] {
+        padding: 0; }
+      #content .account .main-statistics .main-statistics-container .main-statistics-row .main-statistics-caption {
+        font-size: 18px;
+        color: #000; }
+      #content .account .main-statistics .main-statistics-container .main-statistics-row .main-statistics-total, #content .account .main-statistics .main-statistics-container .main-statistics-row .main-statistics-avg {
+        text-align: right; }
+
+/*# sourceMappingURL=style_account_view.css.map */

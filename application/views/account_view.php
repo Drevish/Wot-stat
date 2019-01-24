@@ -3,6 +3,8 @@
     $stats = $data->$user_id->statistics;
 ?>
 
+<link rel="stylesheet" href="/css/style_account_view.css">
+
 <div class="account">
     <div class="container">
 
@@ -12,7 +14,9 @@
             <div class="col-lg-10">
 
                 <div class="nickname">
-                    <?= $data->$user_id->nickname ?>
+                    <a class="nickname-link" href="<?= 'http://'.$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'] ?>">
+                        <?= $data->$user_id->nickname ?>
+                    </a>
                 </div>
 
                 <div class="registration-date info">
@@ -75,7 +79,7 @@
                     </div>
 
                     <div class="col-lg-11">
-                        <div class="clan-tag">[<?= $data->clan_info->tag ?>]</div>
+                        <div class="clan-tag">[<b><?= $data->clan_info->tag ?></b>]</div>
                         <div class="clan-name"><?= $data->clan_info->name ?></div>
                     </div>
 
@@ -83,6 +87,98 @@
             </div>
             <?php endif; ?>
 
+        </div>
+
+
+
+        <div class="row account-info">
+
+
+            <div class="col-lg-2 col-lg-offset-1">
+                <div class="account-info-field">
+                    <div class="account-info-field-data">
+                        <?= number_format($stats->all->battles, '0', '.', ' ') ?>
+                    </div>
+                    <div class="account-info-field-description">
+                        Battles
+                    </div>
+                </div>
+
+                <div class="account-info-field">
+                    <div class="account-info-field-data">
+                        <?= number_format( $stats->all->hits / $stats->all->shots * 100, '2', '.', ' ')  ?>%
+                    </div>
+                    <div class="account-info-field-description">
+                        Hits precision
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="col-lg-2">
+                <div class="account-info-field">
+                    <div class="account-info-field-data">
+                        <?= number_format($stats->all->wins / $stats->all->battles * 100, 2) ?>%
+                    </div>
+                    <div class="account-info-field-description">
+                        Victories
+                    </div>
+                </div>
+
+                <div class="account-info-field">
+                    <div class="account-info-field-data">
+                        <?= number_format($stats->all->damage_dealt / $stats->all->battles, 0, '.', '.') ?>
+                    </div>
+                    <div class="account-info-field-description">
+                        Average damage per battle
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-2">
+                <div class="account-info-field-big">
+                    <div class="account-info-field-big-image">
+                        <img src="/images/WorldOfTanks.ico"  class = "img-responsive">
+                    </div>
+                    <div class="account-info-field-big-data">
+                        <?= number_format($data->$user_id->global_rating, '0', '.', ' ') ?>
+                    </div>
+                    <div class="account-info-field-big-description">
+                    Global rating
+                </div>
+                </div>
+            </div>
+
+            <div class="col-lg-2">
+                <div class="account-info-field">
+                    <div class="account-info-field-data">
+                        <?= $stats->all->battle_avg_xp ?>
+                    </div>
+                    <div class="account-info-field-description">
+                        Average experience per battle
+                    </div>
+                </div>
+
+                <div class="account-info-field">
+                    <div class="account-info-field-data">
+                        <?= $stats->all->max_frags ?>
+                    </div>
+                    <div class="account-info-field-description">
+                        Maximum frags
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-2">
+                <div class="account-info-field">
+                    <div class="account-info-field-data">
+                        <?= number_format($stats->all->max_xp, '0', '.', ' ') ?>
+                    </div>
+                    <div class="account-info-field-description">
+                        Maximum experience
+                    </div>
+                </div>
+            </div>
         </div>
 
 
@@ -184,7 +280,7 @@
                             <?= number_format($stats->all->hits, '0', '.', ' ') ?>
                         </div>
                         <div class="col-lg-3 main-statistics-avg">
-                            <?= $stats->all->hits_percents ?>
+                            <?= number_format( $stats->all->hits / $stats->all->shots * 100, '2', '.', ' ')  ?>
                         </div>
                     </div>
 

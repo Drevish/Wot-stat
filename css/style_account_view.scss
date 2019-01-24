@@ -1,0 +1,84 @@
+#content {
+  .account {
+
+    .top-row {
+      .nickname {
+        font-weight: bold;
+        font-size: 20px;
+
+        .nickname-link {
+          color: black;
+        }
+      }
+
+      .info {
+        .secondary-text {
+          color: rgba(0, 0, 0, 0.6);
+        }
+      }
+
+      margin-top: 20px;
+    }
+
+    .clan-info {
+      margin-top: 20px;
+    }
+
+    .account-info {
+      margin-top: 50px;
+
+      .account-info-field {
+        height: 150px;
+
+        text-align: center;
+
+        .account-info-field-data {
+          color: #000000;
+          font-size: 30px;
+        }
+      }
+
+      .account-info-field-big {
+        text-align: center;
+
+        .account-info-field-big-image {
+          display: inline-block;
+        }
+
+        .account-info-field-big-data {
+          margin-top: 20px;
+          color: #000000;
+          font-size: 30px;
+        }
+      }
+    }
+
+    .main-statistics {
+      font-size: 16px;
+
+      margin-bottom: 50px;
+      
+      .main-statistics-container {
+        margin-top: 30px;
+
+        .main-statistics-row {
+          border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+          margin-bottom: 5px;
+
+          [class^="col"] {
+            padding: 0;
+          }
+
+          .main-statistics-caption {
+            font-size: 18px;
+            color: #000;
+          }
+
+          .main-statistics-total, .main-statistics-avg {
+            text-align: right;
+          }
+        }
+      }
+    }
+  }
+}
