@@ -80,5 +80,54 @@
         }
       }
     }
+
+    #tanks {
+      margin-top: 30px;
+      margin-bottom: 50px;
+      
+      #tanksTable {
+
+        thead {
+          th {
+            text-align: center;
+          }
+        }
+
+        tbody {
+          td {
+            text-align: center;
+            vertical-align: middle;
+            padding: 0;
+            height: 50px;
+          }
+
+          .nation-image-wrapper {
+
+            .nation-image{
+              height: 20px;
+            }
+          }
+
+          .tank-image-wrapper{
+            height: 50px;
+            overflow: hidden;
+
+            .tank-image {
+              height: 65px;
+
+              transform: translateY(-10px);
+            }
+          }
+
+          .mark-of-mastery-image-wrapper {
+            text-align: center;
+
+            .mark-of-mastery-image{
+              height: 30px;
+            }
+          }
+        }
+      }
+    }
   }
 }

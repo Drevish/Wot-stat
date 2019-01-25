@@ -40,5 +40,27 @@
         color: #000; }
       #content .account .main-statistics .main-statistics-container .main-statistics-row .main-statistics-total, #content .account .main-statistics .main-statistics-container .main-statistics-row .main-statistics-avg {
         text-align: right; }
+#content .account #tanks {
+  margin-top: 30px;
+  margin-bottom: 50px; }
+  #content .account #tanks #tanksTable thead th {
+    text-align: center; }
+  #content .account #tanks #tanksTable tbody td {
+    text-align: center;
+    vertical-align: middle;
+    padding: 0;
+    height: 50px; }
+  #content .account #tanks #tanksTable tbody .nation-image-wrapper .nation-image {
+    height: 20px; }
+  #content .account #tanks #tanksTable tbody .tank-image-wrapper {
+    height: 50px;
+    overflow: hidden; }
+    #content .account #tanks #tanksTable tbody .tank-image-wrapper .tank-image {
+      height: 65px;
+      transform: translateY(-10px); }
+  #content .account #tanks #tanksTable tbody .mark-of-mastery-image-wrapper {
+    text-align: center; }
+    #content .account #tanks #tanksTable tbody .mark-of-mastery-image-wrapper .mark-of-mastery-image {
+      height: 30px; }
 
 /*# sourceMappingURL=style_account_view.css.map */

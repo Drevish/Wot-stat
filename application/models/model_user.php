@@ -7,6 +7,8 @@ class Model_User extends Model {
 
     private $curl;
 
+    private $tanksDatabaseFile = DIRECTORY_SEPARATOR."data".DIRECTORY_SEPARATOR."tanksDatabase.dat";
+
     public function __construct()
     {
         // gets user statistics using wot api and returns it
@@ -19,13 +21,12 @@ class Model_User extends Model {
         curl_setopt($this->curl, CURLOPT_SSL_VERIFYPEER, false);
     }
 
-
     /**
      * @param $url string url which be used for the request
-     * @return mixed response object, decoded from json
+     * @return string data in json format
      * @throws FailedRequestException
      */
-    private function apiRequest($url) {
+    private function getJsonFromAPI($url) {
         curl_setopt($this->curl, CURLOPT_URL, $url);
 
         $response = curl_exec($this->curl);
@@ -33,6 +34,18 @@ class Model_User extends Model {
         // failed request
         if (!$response)
             throw new FailedRequestException();
+
+        return $response;
+    }
+
+    /**
+     * @param $url string url which be used for the request
+     * @return mixed response object, decoded from json
+     * @throws FailedRequestException
+     */
+    private function getDataFromAPI($url) {
+
+        $response = $this->getJsonFromAPI($url);
 
         $response = json_decode($response);
 
@@ -51,7 +64,7 @@ class Model_User extends Model {
      */
     private function getUserId($nickname) {
 
-        $response = $this->apiRequest(
+        $response = $this->getDataFromAPI(
                 "https://api.worldoftanks.ru/wot/account/list/?application_id=$this->application_id&search=$nickname");
 
         // no account with such nickname or with nickname which starts with this letters
@@ -71,7 +84,7 @@ class Model_User extends Model {
      */
     private function getClanInfo($clan_id) {
 
-        $response = $this->apiRequest(
+        $response = $this->getDataFromAPI(
             "https://api.worldoftanks.ru/wgn/clans/info/?application_id=$this->application_id" .
             "&clan_id=$clan_id&fields=tag%2C+name%2C+clan_id");
 
@@ -80,12 +93,56 @@ class Model_User extends Model {
         return $response;
     }
 
+    /**
+     * Gets info about user's tanks and their statistics
+     * @param $user_id account id
+     * @return mixed data object
+     * @throws FailedRequestException
+     */
+    private function getTanksInfo($user_id) {
+
+        $response = $this->getDataFromAPI(
+            "https://api.worldoftanks.ru/wot/tanks/stats/?application_id=$this->application_id" .
+            "&account_id=$user_id");
+
+        $response = $response->data->$user_id;
+
+        return $response;
+    }
+
+    /**
+     * Downloads and saves tanks info database to a $tanksDatabaseFile
+     */
+    private function saveTanksDatabase () {
+        $response = $this->getJsonFromAPI(
+            "https://api.worldoftanks.ru/wot/encyclopedia/vehicles/?application_id=$this->application_id");
+
+        $file = fopen($_SERVER['DOCUMENT_ROOT'].$this->tanksDatabaseFile, 'w');
+        fwrite($file, $response);
+    }
+
+    /**
+     * Reads from file and decodes tanks database
+     */
+    private function getTanksDatabase() {
+        $filename = $_SERVER['DOCUMENT_ROOT'].$this->tanksDatabaseFile;
+
+        $file = fopen( $filename, 'r');
+        $tanksDatabaseJson = fread($file, filesize($filename));
+        $tanksDatabase = json_decode($tanksDatabaseJson);
+        $tanksDatabase = $tanksDatabase->data;
+
+        return $tanksDatabase;
+    }
+
+
+
     function getData($nickname = null)
     {
         // looking for user id by nickname
         $user_id = $this->getUserId($nickname);
 
-        $response = $this->apiRequest(
+        $response = $this->getDataFromAPI(
             "https://api.worldoftanks.ru/wot/account/info/?application_id=$this->application_id&account_id=$user_id");
 
         $response = $response->data;
@@ -97,7 +154,13 @@ class Model_User extends Model {
             $response->clan_info = $this->getClanInfo($response->$user_id->clan_id);
         }
 
+        // get player's tanks statistics
+        $response->tanks = $this->getTanksInfo($user_id);
 
+        // get tanks database
+        $response->tanksDatabase = $this->getTanksDatabase();
+
+//        $this->saveTanksDatabase();
         return $response;
     }
 
