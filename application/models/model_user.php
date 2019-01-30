@@ -1,60 +1,8 @@
 <?php
 
-define('__ROOT__', dirname(dirname(__FILE__)));
-require_once __ROOT__.'/core/exceptions.php';
-
 class Model_User extends Model {
 
-    private $curl;
-
     private $tanksDatabaseFile = DIRECTORY_SEPARATOR."data".DIRECTORY_SEPARATOR."tanksDatabase.dat";
-
-    public function __construct()
-    {
-        // gets user statistics using wot api and returns it
-        $this->curl = curl_init();
-
-        curl_setopt($this->curl, CURLOPT_FOLLOWLOCATION, true);   //Follow redirects, if any
-        curl_setopt($this->curl, CURLOPT_RETURNTRANSFER, true);
-        curl_setopt($this->curl, CURLOPT_HEADER, false);          //We don't need the header
-        curl_setopt($this->curl, CURLOPT_ENCODING, "");           // Accept any encoding
-        curl_setopt($this->curl, CURLOPT_SSL_VERIFYPEER, false);
-    }
-
-    /**
-     * @param $url string url which be used for the request
-     * @return string data in json format
-     * @throws FailedRequestException
-     */
-    private function getJsonFromAPI($url) {
-        curl_setopt($this->curl, CURLOPT_URL, $url);
-
-        $response = curl_exec($this->curl);
-
-        // failed request
-        if (!$response)
-            throw new FailedRequestException();
-
-        return $response;
-    }
-
-    /**
-     * @param $url string url which be used for the request
-     * @return mixed response object, decoded from json
-     * @throws FailedRequestException
-     */
-    private function getDataFromAPI($url) {
-
-        $response = $this->getJsonFromAPI($url);
-
-        $response = json_decode($response);
-
-        //failed request
-        if ($response->status == 'error')
-            throw new FailedRequestException();
-
-        return $response;
-    }
 
     /**
      * @param $nickname user nickname or user's nickname left part
@@ -162,10 +110,5 @@ class Model_User extends Model {
 
 //        $this->saveTanksDatabase();
         return $response;
-    }
-
-    public function __destruct()
-    {
-        curl_close($this->curl);
     }
 }

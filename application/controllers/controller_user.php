@@ -10,7 +10,7 @@ class Controller_User extends Controller {
     function action_search()
     {
         $query = explode('/', $_SERVER['REQUEST_URI']);
-        $nickname = (empty(query[3])) ? '' : $query[3];
+        $nickname = (empty($query[3])) ? '' : $query[3];
 
         // nickname's too short
         if (strlen($nickname) < 3) {

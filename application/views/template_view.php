@@ -6,12 +6,15 @@
                 if(isset($data->user_id)) {
                     $id = $data->user_id;
                     echo $data->$id->nickname . "'s statistics";
+                } else
+                    if(isset($data->motto)) {
+                    echo "Clan [$data->tag]";
                 }
                 else echo 'Wot statistics'; ?>
             </title>
 
         <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+<!--        <meta name="viewport" content="width=device-width, initial-scale=1">-->
 
         <!-- Favicon -->
         <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon">
@@ -53,14 +56,25 @@
                             <a href="/">Home</a>
                         </li>
                         <li class="<?php if(substr($_SERVER['REQUEST_URI'], 0, 5) == '/user') echo "active"?>">
-                            <a href="/user">Statistics</a>
+                            <a href="/user">User</a>
+                        </li>
+                        <li class="<?php if(substr($_SERVER['REQUEST_URI'], 0, 5) == '/clan') echo "active"?>">
+                        <a href="/clan">Clan</a>
                         </li>
                         <li class="disabled"><a href="#">TOP</a></li>
                         <li class="disabled"><a href="#">Information</a></li>
                     </ul>
 
                     <div class="form-wrapper navbar-right">
-                        <?php include "application/views/search_user_form.php"; ?>
+                        <?php
+                        if(substr($_SERVER['REQUEST_URI'], 0, 5) == '/user') {
+                            include "application/views/search_user_form.php";
+                        } else if(substr($_SERVER['REQUEST_URI'], 0, 5) == '/clan') {
+                            include "application/views/search_clan_form.php";
+                        } else {
+                            include "application/views/search_form.php";
+                        }
+                        ?>
                     </div>
 
                 </div>

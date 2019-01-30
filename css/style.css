@@ -12,3 +12,14 @@
 
 footer {
   height: 60px; }
+
+.search-submit-button {
+  background-color: #cc0000;
+  border-color: #cc0000;
+  color: #ffffff; }
+  .search-submit-button:hover, .search-submit-button:active {
+    background-color: red;
+    border-color: red;
+    color: #ffffff; }
+  .search-submit-button:focus {
+    color: #ffffff; }

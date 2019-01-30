@@ -15,6 +15,6 @@
 
 
     <div class="form-wrapper text-center">
-        <?php include 'application/views/search_user_form.php'; ?>
+        <?php include 'application/views/search_form.php'; ?>
     </div>
 </div>

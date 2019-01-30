@@ -1,0 +1,99 @@
+.clan {
+  .short-description {
+    margin-top: 30px;
+
+    .clan-icon img{
+      width: 150px;
+      height: 150px;
+    }
+
+    .tag-and-name {
+      font-weight: bold;
+
+      a {
+        color: #333333;
+        font-size: 22px;
+
+        .tag {
+          font-size: 24px;
+        }
+      }
+    }
+
+    .motto {
+      font-size: 20px;
+    }
+
+    .created-at, .members-count{
+      font-size: 18px;
+
+      .secondary-text {
+        color: rgba(0, 0, 0, 0.6);
+      }
+    }
+  }
+
+  .clan-description {
+    margin-top: 30px;
+
+    .caption {
+      font-weight: bold;
+      font-size: 20px;
+      margin-bottom: 10px;
+    }
+  }
+
+  .clan-players {
+    @extend .clan-description;
+
+    #players-table {
+      margin-top: 10px;
+      margin-bottom: 0;
+
+      thead {
+        th {
+          text-align: center;
+        }
+      }
+      
+      tr{
+        td{
+          text-align: center;
+        }
+      }
+    }
+
+    .table-preloader {
+      height: 40px;
+      overflow: hidden;
+      position: relative;
+
+      .spinner div {
+        width: 15px;
+        height: 15px;
+        position: absolute;
+        left: -20px;
+        top: 10px;
+        background-color: #333;
+        border-radius: 50%;
+        animation: move 4s infinite cubic-bezier(.2,.64,.81,.23);
+      }
+      .spinner div:nth-child(2) {
+        animation-delay: 150ms;
+      }
+      .spinner div:nth-child(3) {
+        animation-delay: 300ms;
+      }
+      .spinner div:nth-child(4) {
+        animation-delay: 450ms;
+      }
+      @keyframes move {
+        0% {left: 0%;}
+        75% {left:100%;}
+        100% {left:100%;}
+      }
+    }
+
+  }
+
+}

@@ -22,6 +22,10 @@
 
     .clan-info {
       margin-top: 20px;
+
+      .clan-tag a{
+        color: #000000;
+      }
     }
 
     .account-info {
@@ -84,7 +88,7 @@
     #tanks {
       margin-top: 30px;
       margin-bottom: 50px;
-      
+
       #tanksTable {
 
         thead {
@@ -94,36 +98,108 @@
         }
 
         tbody {
-          td {
-            text-align: center;
-            vertical-align: middle;
-            padding: 0;
-            height: 50px;
+
+          tr {
+            cursor: pointer;
+            
+            &:hover {
+              background: #eeeeee;
+            }
+            
+            td {
+              text-align: center;
+              vertical-align: middle;
+              padding: 0;
+              height: 50px;
+            }
+
+            .nation-image-wrapper {
+
+              .nation-image {
+                height: 20px;
+              }
+            }
+
+            .tank-image-wrapper {
+              height: 50px;
+              overflow: hidden;
+
+              .tank-image {
+                height: 65px;
+
+                transform: translateY(-10px);
+              }
+            }
+
+            .mark-of-mastery-image-wrapper {
+              text-align: center;
+
+              .mark-of-mastery-image {
+                height: 30px;
+              }
+            }
+          }
+        }
+      }
+
+      .tank-info-panels {
+
+        .tank-name {
+          font-size: 18px;
+          color: #000000;
+          text-shadow: 1px 1px 7px #444444;
+        }
+
+        .tank-info-panel {
+          display: none;
+
+          &.active {
+            display: block;
           }
 
-          .nation-image-wrapper {
+          .data-panel {
+            margin-bottom: 20px;
 
-            .nation-image{
+            .data-panel-field-delimiter {
+              display: block;
               height: 20px;
             }
-          }
 
-          .tank-image-wrapper{
-            height: 50px;
-            overflow: hidden;
-
-            .tank-image {
-              height: 65px;
-
-              transform: translateY(-10px);
+            .data-panel-caption {
+              font-size: 16px;
+              font-weight: bold;
+              color: #000000;
             }
-          }
 
-          .mark-of-mastery-image-wrapper {
-            text-align: center;
+            .data-panel-field {
+              display: block;
+              position: relative;
+              overflow: hidden;
 
-            .mark-of-mastery-image{
-              height: 30px;
+              .data-panel-field-caption {
+                display: inline-block;
+                float: left;
+
+                color: #7B7B7B;
+
+                &:after {
+                  content: '.....................................................................................';
+                }
+              }
+
+              .data-panel-field-data {
+                position: absolute;
+                display: inline-block;
+                background-color: #fff;
+                right: 0;
+                z-index: 2;
+
+                color: #000000;
+
+                .empty-value {
+                  color: #7B7B7B;
+                }
+              }
             }
           }
         }

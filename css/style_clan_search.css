@@ -1,0 +1,59 @@
+.clan .short-description {
+  margin-top: 30px; }
+  .clan .short-description .clan-icon img {
+    width: 150px;
+    height: 150px; }
+  .clan .short-description .tag-and-name {
+    font-weight: bold; }
+    .clan .short-description .tag-and-name a {
+      color: #333333;
+      font-size: 22px; }
+      .clan .short-description .tag-and-name a .tag {
+        font-size: 24px; }
+  .clan .short-description .motto {
+    font-size: 20px; }
+  .clan .short-description .created-at, .clan .short-description .members-count {
+    font-size: 18px; }
+    .clan .short-description .created-at .secondary-text, .clan .short-description .members-count .secondary-text {
+      color: rgba(0, 0, 0, 0.6); }
+.clan .clan-description, .clan .clan-players {
+  margin-top: 30px; }
+  .clan .clan-description .caption, .clan .clan-players .caption {
+    font-weight: bold;
+    font-size: 20px;
+    margin-bottom: 10px; }
+.clan .clan-players #players-table {
+  margin-top: 10px;
+  margin-bottom: 0; }
+  .clan .clan-players #players-table thead th {
+    text-align: center; }
+  .clan .clan-players #players-table tr td {
+    text-align: center; }
+.clan .clan-players .table-preloader {
+  height: 40px;
+  overflow: hidden;
+  position: relative; }
+  .clan .clan-players .table-preloader .spinner div {
+    width: 15px;
+    height: 15px;
+    position: absolute;
+    left: -20px;
+    top: 10px;
+    background-color: #333;
+    border-radius: 50%;
+    animation: move 4s infinite cubic-bezier(0.2, 0.64, 0.81, 0.23); }
+  .clan .clan-players .table-preloader .spinner div:nth-child(2) {
+    animation-delay: 150ms; }
+  .clan .clan-players .table-preloader .spinner div:nth-child(3) {
+    animation-delay: 300ms; }
+  .clan .clan-players .table-preloader .spinner div:nth-child(4) {
+    animation-delay: 450ms; }
+@keyframes move {
+  0% {
+    left: 0%; }
+  75% {
+    left: 100%; }
+  100% {
+    left: 100%; } }
+
+/*# sourceMappingURL=style_clan_search.css.map */

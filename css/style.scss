@@ -17,3 +17,19 @@
 footer {
   height: 60px;
 }
+
+.search-submit-button {
+  background-color: rgb(204, 0, 0);
+  border-color: rgb(204, 0, 0);
+  color: #ffffff;
+
+  &:hover, &:active{
+    background-color: rgb(255, 0, 0);
+    border-color: rgb(255, 0, 0);
+    color: #ffffff;
+  }
+
+  &:focus {
+    color: #ffffff;
+  }
+}

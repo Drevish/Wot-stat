@@ -1,0 +1,35 @@
+.mode-chooser {
+  .mode-chose {
+    display: inline-block;
+    width: 35px;
+
+    &:after {
+      content: ' ';
+    }
+  }
+}
+
+.mode-options {
+  border: 0;
+  padding: 0;
+
+  .active-option {
+    background-color: #555555;
+
+    .mode-option-text {
+      color: #ffffff;
+    }
+  }
+
+  .mode-option a{
+    &:focus {
+      color: #000000;
+    }
+
+    &:hover, &:active {
+      background-color: #222222;
+      color: #ffffff;
+    }
+
+  }
+}

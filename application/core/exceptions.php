@@ -7,3 +7,5 @@ class FailedRequestException extends Exception {}
 class TooShortNicknameException extends Exception {}
 
 class InvalidNicknameException extends Exception {}
+
+class ClanNotFoundException extends Exception {}

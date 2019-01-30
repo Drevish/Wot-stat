@@ -1,0 +1,20 @@
+.mode-chooser .mode-chose {
+  display: inline-block;
+  width: 35px; }
+  .mode-chooser .mode-chose:after {
+    content: ' '; }
+
+.mode-options {
+  border: 0;
+  padding: 0; }
+  .mode-options .active-option {
+    background-color: #555555; }
+    .mode-options .active-option .mode-option-text {
+      color: #ffffff; }
+  .mode-options .mode-option a:focus {
+    color: #000000; }
+  .mode-options .mode-option a:hover, .mode-options .mode-option a:active {
+    background-color: #222222;
+    color: #ffffff; }
+
+/*# sourceMappingURL=style_search_form.css.map */

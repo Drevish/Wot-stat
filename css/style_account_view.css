@@ -9,6 +9,8 @@
     color: rgba(0, 0, 0, 0.6); }
 #content .account .clan-info {
   margin-top: 20px; }
+  #content .account .clan-info .clan-tag a {
+    color: #000000; }
 #content .account .account-info {
   margin-top: 50px; }
   #content .account .account-info .account-info-field {
@@ -45,22 +47,62 @@
   margin-bottom: 50px; }
   #content .account #tanks #tanksTable thead th {
     text-align: center; }
-  #content .account #tanks #tanksTable tbody td {
-    text-align: center;
-    vertical-align: middle;
-    padding: 0;
-    height: 50px; }
-  #content .account #tanks #tanksTable tbody .nation-image-wrapper .nation-image {
-    height: 20px; }
-  #content .account #tanks #tanksTable tbody .tank-image-wrapper {
-    height: 50px;
-    overflow: hidden; }
-    #content .account #tanks #tanksTable tbody .tank-image-wrapper .tank-image {
-      height: 65px;
-      transform: translateY(-10px); }
-  #content .account #tanks #tanksTable tbody .mark-of-mastery-image-wrapper {
-    text-align: center; }
-    #content .account #tanks #tanksTable tbody .mark-of-mastery-image-wrapper .mark-of-mastery-image {
-      height: 30px; }
+  #content .account #tanks #tanksTable tbody tr {
+    cursor: pointer; }
+    #content .account #tanks #tanksTable tbody tr:hover {
+      background: #eeeeee; }
+    #content .account #tanks #tanksTable tbody tr td {
+      text-align: center;
+      vertical-align: middle;
+      padding: 0;
+      height: 50px; }
+    #content .account #tanks #tanksTable tbody tr .nation-image-wrapper .nation-image {
+      height: 20px; }
+    #content .account #tanks #tanksTable tbody tr .tank-image-wrapper {
+      height: 50px;
+      overflow: hidden; }
+      #content .account #tanks #tanksTable tbody tr .tank-image-wrapper .tank-image {
+        height: 65px;
+        transform: translateY(-10px); }
+    #content .account #tanks #tanksTable tbody tr .mark-of-mastery-image-wrapper {
+      text-align: center; }
+      #content .account #tanks #tanksTable tbody tr .mark-of-mastery-image-wrapper .mark-of-mastery-image {
+        height: 30px; }
+  #content .account #tanks .tank-info-panels .tank-name {
+    font-size: 18px;
+    color: #000000;
+    text-shadow: 1px 1px 7px #444444; }
+  #content .account #tanks .tank-info-panels .tank-info-panel {
+    display: none; }
+    #content .account #tanks .tank-info-panels .tank-info-panel.active {
+      display: block; }
+    #content .account #tanks .tank-info-panels .tank-info-panel .data-panel {
+      margin-bottom: 20px; }
+      #content .account #tanks .tank-info-panels .tank-info-panel .data-panel .data-panel-field-delimiter {
+        display: block;
+        height: 20px; }
+      #content .account #tanks .tank-info-panels .tank-info-panel .data-panel .data-panel-caption {
+        font-size: 16px;
+        font-weight: bold;
+        color: #000000; }
+      #content .account #tanks .tank-info-panels .tank-info-panel .data-panel .data-panel-field {
+        display: block;
+        position: relative;
+        overflow: hidden; }
+        #content .account #tanks .tank-info-panels .tank-info-panel .data-panel .data-panel-field .data-panel-field-caption {
+          display: inline-block;
+          float: left;
+          color: #7B7B7B; }
+          #content .account #tanks .tank-info-panels .tank-info-panel .data-panel .data-panel-field .data-panel-field-caption:after {
+            content: '.....................................................................................'; }
+        #content .account #tanks .tank-info-panels .tank-info-panel .data-panel .data-panel-field .data-panel-field-data {
+          position: absolute;
+          display: inline-block;
+          background-color: #fff;
+          right: 0;
+          z-index: 2;
+          color: #000000; }
+          #content .account #tanks .tank-info-panels .tank-info-panel .data-panel .data-panel-field .data-panel-field-data .empty-value {
+            color: #7B7B7B; }
 
 /*# sourceMappingURL=style_account_view.css.map */
