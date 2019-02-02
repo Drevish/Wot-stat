@@ -53,6 +53,7 @@
           margin-top: 20px;
           color: #000000;
           font-size: 30px;
+          text-shadow: 1px 1px 1px #000;
         }
       }
     }
@@ -90,8 +91,10 @@
       margin-bottom: 50px;
 
       #tanksTable {
+        color: #ffffff;
 
         thead {
+          background-color: #000000;
           th {
             text-align: center;
           }
@@ -100,10 +103,11 @@
         tbody {
 
           tr {
+            background-color: #000000;
             cursor: pointer;
             
             &:hover {
-              background: #eeeeee;
+              background: #444444;
             }
             
             td {

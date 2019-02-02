@@ -16,6 +16,8 @@
         <meta charset="utf-8">
 <!--        <meta name="viewport" content="width=device-width, initial-scale=1">-->
 
+        <meta name="description" content="Wot-stat is a system of a quick and simple view of the full information about any World of Tanks player. Just simply insert the player's nickname in a search field and system will give you all the available information about account or clan you are looking for. ">
+
         <!-- Favicon -->
         <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon">
 

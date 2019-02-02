@@ -1,4 +1,6 @@
 <?php
+    require_once __ROOT__.'/statistics/Statistics.php';
+
     $user_id = $data->user_id;
     $stats = $data->$user_id->statistics;
 
@@ -140,8 +142,12 @@
 
             <div class="col-sm-2">
                 <div class="account-info-field">
-                    <div class="account-info-field-data">
-                        <?= number_format($stats->all->wins / $stats->all->battles * 100, 2) ?>%
+                    <?php
+                        $winrate = number_format($stats->all->wins / $stats->all->battles * 100, 2);
+                    ?>
+                    <div class="account-info-field-data"
+                    style="color: <?= Statistics::getColorByWinrate($winrate)?>;">
+                        <b><?= $winrate ?>%</b>
                     </div>
                     <div class="account-info-field-description">
                         Victories
@@ -163,7 +169,8 @@
                     <div class="account-info-field-big-image">
                         <img src="/images/WorldOfTanks.ico"  class = "img-responsive">
                     </div>
-                    <div class="account-info-field-big-data">
+                    <div class="account-info-field-big-data"
+                    style="color: <?= Statistics::getColorByWG($data->$user_id->global_rating) ?>;">
                         <?= number_format($data->$user_id->global_rating, '0', '.', ' ') ?>
                     </div>
                     <div class="account-info-field-big-description">
@@ -199,6 +206,16 @@
                     </div>
                     <div class="account-info-field-description">
                         Maximum experience
+                    </div>
+                </div>
+
+                <div class="account-info-field">
+                    <div class="account-info-field-data"
+                    style="color: <?= $data->WN8color ?>;">
+                        <b><?= number_format($data->WN8, '0', '.', ' ') ?></b>
+                    </div>
+                    <div class="account-info-field-description">
+                        WN8
                     </div>
                 </div>
             </div>
@@ -390,7 +407,7 @@
                 <div class="row">
 
 
-                    <div class="col-sm-9">
+                    <div class="col-xs-9">
                         <table id="tanksTable" class="table table-condensed">
                             <thead>
                                 <tr>
@@ -398,8 +415,9 @@
                                     <th>I-X</th>
                                     <th></th>
                                     <th>Name</th>
+                                    <th>WN8</th>
                                     <th>Battles</th>
-                                    <th>Victories</th>
+                                    <th>Winrate</th>
                                     <th>Avg. exp.</th>
                                     <th>Mastery</th>
                                 </tr>
@@ -432,10 +450,20 @@
                                             <img class="tank-image" src="<?= $tankInfo->images->big_icon ?>" alt="">
                                         </div>
                                     </td>
-                                    <td class="td-text"><?= $tankInfo->short_name ?></td>
+                                    <td class="td-text"><?= $tankInfo->short_name ?> </td>
+
+                                    <td class="td-text" style="color: <?= Statistics::getColorByWN8($tank->WN8)?>">
+                                        <b><?= $tank->WN8 ?></b>
+                                    </td>
+
                                     <td class="td-text"><?= $tank->all->battles ?></td>
-                                    <td class="td-text">
-                                        <?= number_format($tank->all->wins / $tank->all->battles * 100, '0') ?>%
+
+                                    <?php
+                                        $winrate = floatval(number_format(
+                                        $tank->all->wins / $tank->all->battles * 100, '0'));
+                                    ?>
+                                    <td class="td-text" style="color: <?= Statistics::getColorByWinrate($winrate)?>">
+                                        <b><?= $winrate ?>%</b>
                                     </td>
                                     <td class="td-text"><?= $tank->all->battle_avg_xp ?></td>
                                     <td>
@@ -455,7 +483,7 @@
                     </div>
 
 
-                    <div class="col-sm-3">
+                    <div class="col-xs-3">
                         <div class="tank-info-panels">
                         <?php
                         $counter = 0;
@@ -576,8 +604,8 @@
                                         <div class="data-panel-field-data">
                                                 &nbsp;<?php
                                             if ($tank->all->stun_number == '0')
-                                                echo '<span class="empty-value">--</span>'; else
-                                            number_format($tank->all->stun_number / $tank->all->battles, '0') ?>
+                                                echo '<span class="empty-value">--</span>'; else echo
+                                            number_format($tank->all->stun_number / $tank->all->battles, '2') ?>
                                         </div>
                                     </div>
 
@@ -586,7 +614,7 @@
                                         <div class="data-panel-field-data">
                                             &nbsp;<?php
                                             if ($tank->all->stun_number == '0')
-                                                echo '<span class="empty-value">--</span>'; else
+                                                echo '<span class="empty-value">--</span>'; else echo
                                                 number_format($tank->all->stun_assisted_damage / $tank->all->battles, '0') ?>
                                         </div>
                                     </div>

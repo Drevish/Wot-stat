@@ -7,8 +7,8 @@
         information about account or clan you are looking for. <br>
         Information will be given in a form of a table that is colored in a comfy XVM-like way.
         Information about the player will contain all his battle statistics, average parameters per battle,<br>
-        calculation of the most important ratings, list of his top-tier tanks, achievements list, clan history etc.
-        Wot-stat will be convenient and useful as for common players - for checking and analyzing own statistics,<br>
+        calculation of the most important ratings, list of his top-tier tanks, achievements list, clan history etc.<br>
+        Wot-stat will be convenient and useful as for common players - for checking and analyzing own statistics,
         as for the clan commanders - for the periodical checking for their bad players, analyzing of candidates that
         want to join the clan and for searching new promising players.<br>
     </p>

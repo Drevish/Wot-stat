@@ -1,5 +1,9 @@
 <?php
 
+require_once __ROOT__.'/statistics/Statistics.php';
+require_once __ROOT__.'/statistics/TankStatistics.php';
+require_once __ROOT__.'/statistics/UserStatistics.php';
+
 class Model_User extends Model {
 
     private $tanksDatabaseFile = DIRECTORY_SEPARATOR."data".DIRECTORY_SEPARATOR."tanksDatabase.dat";
@@ -83,6 +87,14 @@ class Model_User extends Model {
         return $tanksDatabase;
     }
 
+    private function getExpectedValues() {
+        $filename = $_SERVER['DOCUMENT_ROOT'].DIRECTORY_SEPARATOR."data".DIRECTORY_SEPARATOR."expected_tank_values.dat";
+        $file = fopen( $filename, 'r');
+        $expected_tank_values = fread($file, filesize($filename));
+        return unserialize($expected_tank_values);
+    }
+
+
 
 
     function getData($nickname = null)
@@ -107,6 +119,19 @@ class Model_User extends Model {
 
         // get tanks database
         $response->tanksDatabase = $this->getTanksDatabase();
+
+        // calculate wn8 for the whole account and add it to the response
+        $userStatistics = new UserStatistics($response->tanks);
+        $response->WN8 = $userStatistics->getWN8();
+        $response->WN8color = Statistics::getColorByWN8($response->WN8);
+
+
+        // calculate wn8 for user's tanks and add it to the response
+        foreach ($response->tanks as &$tank) {
+            $tankStatistics = new TankStatistics($tank);
+            $tank->WN8 = $tankStatistics->getWN8();
+        }
+
 
 //        $this->saveTanksDatabase();
         return $response;

@@ -50,6 +50,9 @@
       margin-top: 10px;
       margin-bottom: 0;
 
+      background: #000000;
+      color: #ffffff;
+
       thead {
         th {
           text-align: center;
@@ -59,6 +62,10 @@
       tr{
         td{
           text-align: center;
+
+          a{
+            color: #ffffff;
+          }
         }
       }
     }

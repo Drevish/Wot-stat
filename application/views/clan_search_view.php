@@ -57,7 +57,7 @@
             <div class="col-sm-12">
                 <div class="caption">Players</div>
 
-                <table id="players-table" class="table table-bordered table-striped">
+                <table id="players-table" class="table table-bordered">
                     <thead>
                     <th>№</th>
                     <th>Nickname</th>
@@ -66,6 +66,7 @@
                     <th>Battles</th>
                     <th>Victories</th>
                     <th>WG</th>
+                    <th>WN8</th>
                     </thead>
 
                     <tbody></tbody>

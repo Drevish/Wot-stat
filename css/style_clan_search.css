@@ -24,11 +24,15 @@
     margin-bottom: 10px; }
 .clan .clan-players #players-table {
   margin-top: 10px;
-  margin-bottom: 0; }
+  margin-bottom: 0;
+  background: #000000;
+  color: #ffffff; }
   .clan .clan-players #players-table thead th {
     text-align: center; }
   .clan .clan-players #players-table tr td {
     text-align: center; }
+    .clan .clan-players #players-table tr td a {
+      color: #ffffff; }
 .clan .clan-players .table-preloader {
   height: 40px;
   overflow: hidden;

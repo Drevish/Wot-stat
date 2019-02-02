@@ -1,5 +1,8 @@
 <?php
 
+require_once __ROOT__.'/statistics/Statistics.php';
+require_once __ROOT__.'/statistics/UserStatistics.php';
+
 class Model_Clan extends Model {
 
     /** Gets clan id from wot api using clantag as a search field
@@ -50,11 +53,24 @@ class Model_Clan extends Model {
 
         $response = $response->data->$user_id;
 
+
+        $userStatisticsJSON = $this->getDataFromAPI(
+            "https://api.worldoftanks.ru/wot/tanks/stats/?application_id=$this->application_id&account_id=$user_id" .
+            "&fields=tank_id%2C+all.battles%2C+all.frags%2C+all.damage_dealt%2C+all.spotted%2C+all.wins%2C+all.dropped_capture_points");
+        $userStatistics = new UserStatistics($userStatisticsJSON->data->$user_id);
+
+
+        $WN8 = $userStatistics->getWN8();
+
         $data = [
           'nickname' => $response->nickname,
-            'wg' => $response->global_rating,
-            'battles' => $response->statistics->all->battles,
-            'victories' => number_format($response->statistics->all->wins / $response->statistics->all->battles * 100, '2')
+            'wg' => number_format($response->global_rating, '0', '', ' '),
+            'WGcolor' => Statistics::getColorByWG($response->global_rating),
+            'battles' => number_format($response->statistics->all->battles, '0', '', ' '),
+            'victories' => number_format($response->statistics->all->wins / $response->statistics->all->battles * 100, '2'),
+            'winrateColor' => Statistics::getColorByWinrate($response->statistics->all->wins / $response->statistics->all->battles * 100),
+            'WN8' => $WN8,
+            'WN8color' => Statistics::getColorByWN8($WN8)
         ];
 
         return json_encode($data);
