@@ -94,8 +94,40 @@ class Model_User extends Model {
         return unserialize($expected_tank_values);
     }
 
+    /**
+     * Downloads and saves WN8 expected values in json format from XVM website
+     */
+    private function saveExpectedValuesJson() {
+        $response = $this->getJsonFromAPI(
+            "https://static.modxvm.com/wn8-data-exp/json/wn8exp.json");
 
+        $file = fopen($_SERVER['DOCUMENT_ROOT'].DIRECTORY_SEPARATOR."data".DIRECTORY_SEPARATOR."expected_tank_values.json", 'w');
+        fwrite($file, $response);
+    }
 
+    /**
+     * Transforms dowloaded WN8 expected values to php serialization format and saves it
+     */
+    private function updateExpectedValues() {
+        $filename = $_SERVER['DOCUMENT_ROOT'].DIRECTORY_SEPARATOR."data".DIRECTORY_SEPARATOR."expected_tank_values.json";
+
+        $file = fopen( $filename, 'r');
+        $valuesString = fread($file, filesize($filename));
+        $values = json_decode($valuesString, FALSE);
+
+        $stats = [];
+        foreach ($values->data as $value) {
+            $stats[$value->IDNum] = $value;
+        }
+
+        file_put_contents($_SERVER['DOCUMENT_ROOT'].DIRECTORY_SEPARATOR."data".DIRECTORY_SEPARATOR."expected_tank_values.dat", serialize($stats));
+    }
+
+    public function updateData() {
+        $this->saveTanksDatabase();
+        $this->saveExpectedValuesJson();
+        $this->updateExpectedValues();
+    }
 
     function getData($nickname = null)
     {
@@ -132,8 +164,7 @@ class Model_User extends Model {
             $tank->WN8 = $tankStatistics->getWN8();
         }
 
-
-//        $this->saveTanksDatabase();
+        // $this->updateData();
         return $response;
     }
 }

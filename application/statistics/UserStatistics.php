@@ -135,13 +135,11 @@ class UserStatistics extends Statistics {
         $expectedWins = 0;
 
         foreach ($this->tanks as $tank) {
-
             $totalDamage += $tank["damage"] * $tank["battles"];
             $totalSpot += $tank["spot"] * $tank["battles"];
             $totalFrags += $tank["frags"] * $tank["battles"];
             $totalDefence += $tank["defence"] * $tank["battles"];
             $totalWins += ($tank["winrate"] / 100) * $tank["battles"];
-
 
             $tankExpectedValues = $expectedValues[$tank["tank_id"]];
 
