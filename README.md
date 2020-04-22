@@ -1,6 +1,6 @@
 # Wot-stat
 System of quick and simple viewing of WoT player's or clan's statistics<br>
-<a href="http://wot-stat.drevish.com/">wot-stat.drevish.com</a><br>
+<a href="https://drevish-wot.000webhostapp.com/">drevish-wot.000webhostapp.com</a><br>
 
 <br><br>
 A simple service for viewing WoT player's and clan's statistics. In additional to the official in-game information, it calculates WN8 rating, the most popular one, and provides coloring of some parameters to ease different players or tanks comparsion. 
